@@ -1,0 +1,215 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: 
+    "aside main main main";
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form.sidebar {
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #006633;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+form > div.sidebar-item {
+    width: calc(100% - 30px);
+    margin: auto;
+    margin-bottom: 15px;
+    /* border: 1px solid black; */
+}
+
+form > div.sidebar-item.top {
+    margin-top: 15px;
+}
+
+/* form > div.sidebar-item.top > img {
+    width: 100%;
+    margin: 10px 0 10px 0;
+} */
+
+form > div.sidebar-item.top > div.div-btn-add, 
+form > div.sidebar-item.bottom > div.div-btn-submit {
+    text-align: center;
+}
+
+form > div.sidebar-item.top > div.div-btn-add > input,
+form > div.sidebar-item.bottom > div.div-btn-submit > input {
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    padding: 10px 14px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #222;
+    font-weight: normal;
+}
+
+form > div.sidebar-item.top > div.div-btn-add > input:hover,
+form > div.sidebar-item.bottom > div.div-btn-submit > input:hover {
+    background-color: rgba(255, 255, 255, 0.6)
+}
+
+form > div.sidebar-item.middle {
+    flex: 1;
+    /* margin-top: 10px; */
+    /* margin-bottom: 10px; */
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.12);
+    font-size: 0.9em;
+    overflow-y: auto;
+}
+
+form > div.sidebar-item.middle::-webkit-scrollbar {
+    width: 9px;
+}
+
+form > div.sidebar-item.middle::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+form > div.sidebar-item.middle::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 20px;
+    border: transparent;
+}
+
+form > div.sidebar-item.middle > div.param-item {
+    display: flex;
+    margin: 10px;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 15px;
+}
+
+
+form > div.sidebar-item.middle > div.param-item > div.input-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+form > div.sidebar-item.middle > div.param-item > div {
+    margin: 3px;
+}
+
+form > div.sidebar-item.middle > div.param-item > div.title {
+    align-self: center;
+    font-size: 0.9em;
+}
+
+form > div.sidebar-item.middle > div.param-item > div.input-group > div.input-field {
+    font-size: 0.8em;
+    margin: 3px;
+}
+
+form > div.sidebar-item.middle > div.param-item > div.input-group > div.input-field > input {
+    font-size: inherit;
+    border-radius: 4px;
+    line-height: 1.5;
+    padding: 0 4px;
+    transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+    border: 2px solid #dee1e2;
+    color: rgb(14, 14, 16);
+    background: #dee1e2;   
+}
+
+form > div.sidebar-item.middle > div.param-item > div.input-group > div.input-field > input:hover {
+    border-color: #ccc;
+}
+
+form > div.sidebar-item.middle > div.param-item > div.input-group > div.input-field > input:focus {
+    background: #fff;
+}
+
+main {
+    grid-area: main;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+main > h1 {
+    text-align: center;
+    margin: 15px;
+    color: #222;
+}
+
+main > p {
+    font-size: 0.9em;
+    text-align: justify;
+    text-indent: 20px;
+    padding: 5px 20px;
+}
+
+main > div.output {
+    flex: 1;
+    margin: 20px auto 23px auto;
+    padding: 15px 30px;
+    width: calc(100% - 26px);
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.06);
+    color: #222;
+}
+
+main > div.output > table {
+    border-collapse: collapse;
+    margin: 25px auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 80%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+}
+
+main > div.output > table > thead > tr >  th {
+    /* background-color: #009879; */
+    color: #ffffff;
+    text-align: left;
+    background-color: rgb(80, 80, 80);
+}
+
+main > div.output > table > thead > tr >  th:first-child {
+    border-top-left-radius: 15px;
+} 
+
+main > div.output > table > thead > tr >  th:last-child {
+    border-top-right-radius: 15px;
+} 
+
+main > div.output > table th,
+main > div.output > table td {
+    padding: 9px 15px;
+}
+
+main > div.output > table > tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+main > div.output > table > tbody tr:last-of-type {
+    border-radius: 15px;
+}
+
+main > footer {
+    text-align: center;
+    background-color: #222;
+    color: rgb(255, 255, 255, 0.9);
+    font-size: 0.7em;
+    padding: 3px;
+}
+
+
+

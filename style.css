@@ -12,7 +12,6 @@ body {
     grid-template-areas: 
     "aside main main main";
     font-family: Arial, Helvetica, sans-serif;
-    height: 100vh;
 }
 
 form.sidebar {
@@ -21,6 +20,7 @@ form.sidebar {
     flex-direction: column;
     background-color: #006633;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    height: 100vh;
 }
 
 form > div.sidebar-item {
@@ -50,7 +50,8 @@ form > div.sidebar-item.bottom > div.div-btn-submit > input {
     outline: 0;
     border: none;
     cursor: pointer;
-    padding: 10px 14px;
+    padding: 8px 12px;
+    font-size: 0.8em;
     border-radius: 15px;
     background-color: rgba(255, 255, 255, 0.85);
     color: #222;
@@ -89,7 +90,7 @@ form > div.sidebar-item.middle::-webkit-scrollbar-thumb {
 form > div.sidebar-item.middle > div.param-item {
     display: flex;
     margin: 10px;
-    padding: 5px 10px;
+    padding: 3px 8px;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 15px;
 }
@@ -108,7 +109,7 @@ form > div.sidebar-item.middle > div.param-item > div {
 
 form > div.sidebar-item.middle > div.param-item > div.title {
     align-self: center;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
 form > div.sidebar-item.middle > div.param-item > div.input-group > div.input-field {
@@ -124,7 +125,8 @@ form > div.sidebar-item.middle > div.param-item > div.input-group > div.input-fi
     transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
     border: 2px solid #dee1e2;
     color: rgb(14, 14, 16);
-    background: #dee1e2;   
+    background: #dee1e2;
+    width: 100px;   
 }
 
 form > div.sidebar-item.middle > div.param-item > div.input-group > div.input-field > input:hover {
@@ -140,29 +142,36 @@ main {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
+    overflow-y: auto;
+    height: 100vh;
 }
 
 main > h1 {
     text-align: center;
-    margin: 15px;
+    margin: 8px;
     color: #222;
+    font-size: 1.5em;
 }
 
 main > p {
     font-size: 0.9em;
     text-align: justify;
     text-indent: 20px;
-    padding: 5px 20px;
+    padding: 4px 20px;
 }
 
 main > div.output {
     flex: 1;
-    margin: 20px auto 23px auto;
-    padding: 15px 30px;
+    margin: 5px auto 5px auto;
+    padding: 10px 20px;
     width: calc(100% - 26px);
     border-radius: 15px;
     background-color: rgba(0, 0, 0, 0.06);
     color: #222;
+}
+
+main > div.output > h2 {
+    font-size: 0.9em;
 }
 
 main > div.output > table {
@@ -211,8 +220,8 @@ main > footer {
     text-align: center;
     background-color: #222;
     color: rgb(255, 255, 255, 0.9);
-    font-size: 0.7em;
-    padding: 3px;
+    font-size: 0.5em;
+    padding: 1px;
 }
 
 

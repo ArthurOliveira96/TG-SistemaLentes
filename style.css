@@ -69,7 +69,7 @@ form > div.sidebar-item.middle {
     /* margin-bottom: 10px; */
     border-radius: 15px;
     background-color: rgba(0, 0, 0, 0.12);
-    font-size: 0.9em;
+    font-size: 0.8em;
     overflow-y: auto;
 }
 
@@ -154,7 +154,7 @@ main > h1 {
 }
 
 main > p {
-    font-size: 0.9em;
+    font-size: 0.8em;
     text-align: justify;
     text-indent: 20px;
     padding: 4px 20px;
@@ -177,7 +177,7 @@ main > div.output > h2 {
 main > div.output > table {
     border-collapse: collapse;
     margin: 12px auto;
-    font-size: 0.9em;
+    font-size: 0.8em;
     font-family: sans-serif;
     width: 80%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);

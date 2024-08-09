@@ -238,7 +238,7 @@ document.getElementById("calcular").onclick = () => {
     // Se o ultimo item nao eh MEIO, cancela a operacao
     if (param_items.length % 2 === 1) {
         alert("O último item do sistema deve ser um MEIO.");
-        return
+        return;
     }
 
     // Se ha campos vazios, cancela a operacao

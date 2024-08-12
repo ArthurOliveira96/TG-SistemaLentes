@@ -65,7 +65,7 @@ function multiple_lenses_formula(n, R, na, da, dab){
             gen12[j] = -(na[j]-nleft[j])/R[2*j]+(na[j]-nright[j])/R[2*j+1]-(da[j]/na[j])*((na[j]-nleft[j])/R[2*j])*((na[j]-nright[j])/R[2*j+1]);
             gen21[j] = da[j]/na[j];
             gen22[j] = 1-(na[j]-nleft[j])*da[j]/(na[j]*R[2*j]);
-        }
+        };
 
         M11[0] = gen11[1]*gen11[0]+gen12[1]*((dab[0]/n[1])*gen11[0]+gen21[0]);
         M12[0] = gen11[1]*gen12[0]+gen12[1]*((dab[0]/n[1])*gen12[0]+gen22[0]);
@@ -85,30 +85,30 @@ function multiple_lenses_formula(n, R, na, da, dab){
         
         for (let i=0; i<dab.length+1; i++){
             nright[i] = n[i+1];
-        }
+        };
 
         for (let i=0; i<dab.length; i++){
             if (dab[i]==0){
                 nright[i] = na[i+1];
             }
-        }
+        };
 
         for (let i=0; i<dab.length+1; i++){
             nleft[i] = n[i];
-        }
+        };
 
         for (var i=0; i<dab.length; i++){
             
             if (dab[i]==0){
                 nleft[i+1] = na[i];
-            }
+            };
 
             for (let j=0; j<R.length/2; j++){
                 gen11[j] = 1+(na[j]-nright[j])*da[j]/(na[j]*R[2*j+1]);
                 gen12[j] = -(na[j]-nleft[j])/R[2*j]+(na[j]-nright[j])/R[2*j+1]-(da[j]/na[j])*((na[j]-nleft[j])/R[2*j])*((na[j]-nright[j])/R[2*j+1]);
                 gen21[j] = da[j]/na[j];
                 gen22[j] = 1-(na[j]-nleft[j])*da[j]/(na[j]*R[2*j]);
-            }
+            };
         
             M11[0] = gen11[1]*gen11[0]+gen12[1]*((dab[0]/n[1])*gen11[0]+gen21[0]);
             M12[0] = gen11[1]*gen12[0]+gen12[1]*((dab[0]/n[1])*gen12[0]+gen22[0]);
@@ -120,8 +120,8 @@ function multiple_lenses_formula(n, R, na, da, dab){
                 M12[k] = gen11[k+1]*M12[k-1]+gen12[k+1]*((dab[k]/n[k+1])*M12[k-1]+M22[k-1]);
                 M21[k] = gen21[k+1]*M11[k-1]+gen22[k+1]*((dab[k]/n[k+1])*M11[k-1]+M21[k-1]);
                 M22[k] = gen21[k+1]*M12[k-1]+gen22[k+1]*((dab[k]/n[k+1])*M12[k-1]+M22[k-1]);
-            }
-        }
+            };
+        };
 
         f = -1/M12[k-1];  // focal distance
         zf = n[0]*f*M11[k-1];  // front focal distance
@@ -131,10 +131,10 @@ function multiple_lenses_formula(n, R, na, da, dab){
         soprime = so+h1; // so'
         siprime = (n[i-1]*(-1/M12[k-1])*soprime)*(1/(soprime-n[0]*(-1/M12[k-1])));  // si'
         si = siprime + h2;
-    }
+    };
 
-    return [M11,M12,M21,M22,f,zb,zf,h1,h2]
-}
+    return [M11,M12,M21,M22,f,zb,zf,h1,h2];
+};
 
 
 window.smoothScroll = function(target) {
@@ -158,67 +158,67 @@ window.smoothScroll = function(target) {
     }
     // start scrolling
     scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
-}
+};
 
 
-document.getElementById("add-item").onclick = () => {
-    const sidebar_middle = document.getElementsByClassName("sidebar-item middle")[0];
-    const items = document.getElementsByClassName("param-item").length;
+document.getElementById("add-elemento").onclick = () => {
+    const form_middle = document.getElementsByClassName("middle")[0];
+    const items = document.getElementsByClassName("input-element").length;
     let id_new_element;
 
     if (items % 2 === 1) {
         // Se impar, adicionar elemento par (MEIO)
-        sidebar_middle.insertAdjacentHTML("beforeend", `
-            <div class="param-item">
-                <div class="title">Meio ${(items+1)/2} 🧊</div>
-                <div class="input-group">
-                    <div class="input-field">
-                        <label for="imdist${items+1}">Distância:</label>
-                        <input type="number" name="mdist${items+1}" id="imdist${items+1}" step="0.0000000001" min="0" required>
-                    </div>
-                    <div class="input-field">
-                        <label for="imref${items+1}">Refração:</label>
-                        <input type="number" name="mref${items+1}" id="imref${items+1}" step="0.0000000001" min="1" required>
+        form_middle.insertAdjacentHTML("beforeend", `
+            <div class="input-element">
+                    <h2>Meio ${(items+1)/2} 🧊</h2>
+                    <div class="input-boxes">
+                        <div class="input-box">
+                            <label for="iref${items+1}">R:</label>
+                            <input type="number" name="ref${items+1}" id="iref${items+1}" placeholder="Refração" step="0.0000000001" min="1" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="idist${items+1}">D:</label>
+                            <input type="number" name="dist${items+1}" id="idist${items+1}" placeholder="Distância" step="0.0000000001" min="0" required>
+                        </div>
                     </div>
                 </div>
-            </div>
         `);
-        id_new_element = `imref${items+1}`;
+        id_new_element = `iref${items+1}`;
     } else {
         // Se par, adicionar elemento impar (LENTE)
-        sidebar_middle.insertAdjacentHTML("beforeend", `
-            <div class="param-item">
-                <div class="title">Lente ${items/2} 🔍</div>
-                <div class="input-group">
-                    <div class="input-field">
-                        <label for="illarg${items+1}">Largura:</label>
-                        <input type="number" name="llarg${items+1}" id="illarg${items+1}" step="0.0000000001" min="0" required>
-                    </div>
-                    <div class="input-field">
-                        <label for="ilref${items+1}">Refração:</label>
-                        <input type="number" name="lref${items+1}" id="ilref${items+1}" step="0.0000000001" min="1" required>
-                    </div>
-                    <div class="input-field">
-                        <label for="ilre${items+1}">R<sub>e</sub>:</label>
-                        <input type="number" name="lre${items+1}" id="ilre${items+1}" step="0.0000000001" required>
-                    </div>
-                    <div class="input-field">
-                        <label for="ilrd${items+1}">R<sub>d</sub>:</label>
-                        <input type="number" name="lrd${items+1}" id="ilrd${items+1}" step="0.0000000001" required>
+        form_middle.insertAdjacentHTML("beforeend", `
+            <div class="input-element">
+                    <h2>Lente ${items/2} 🔍</h2>
+                    <div class="input-boxes">
+                        <div class="input-box">
+                            <label for="iref${items+1}">R:</label>
+                            <input type="number" name="ref${items+1}" id="iref${items+1}" placeholder="Refração" step="0.0000000001" min="1" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="ilar${items+1}">L:</label>
+                            <input type="number" name="lar${items+1}" id="ilar${items+1}" placeholder="Largura" step="0.0000000001" min="0" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="ire${items+1}">R<sub>e</sub>:</label>
+                            <input type="number" name="re${items+1}" id="ire${items+1}" placeholder="Raio esquerdo" step="0.0000000001" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="ird${items+1}">R<sub>d</sub>:</label>
+                            <input type="number" name="rd${items+1}" id="ird${items+1}" placeholder="Raio direito" step="0.0000000001" required>
+                        </div>
                     </div>
                 </div>
-            </div>
         `);
-        id_new_element = `ilrd${items+1}`;
+        id_new_element = `ird${items+1}`;
     };
 
     window.smoothScroll(document.getElementById(id_new_element));
 };
 
 
-document.getElementById("remover-item").onclick = () => {
-    const items = document.getElementsByClassName("param-item");
-    if (items.length > 1) {
+document.getElementById("remover-elemento").onclick = () => {
+    const items = document.getElementsByClassName("input-element");
+    if (items.length > 4) {
         const to_remove = items[items.length-1];
         to_remove.remove();
     };
@@ -226,8 +226,8 @@ document.getElementById("remover-item").onclick = () => {
 
 
 document.getElementById("calcular").onclick = () => {
-    const sidebar_middle = document.getElementsByClassName("sidebar-item middle")[0];
-    const param_items = sidebar_middle.getElementsByClassName("param-item");
+    const form_middle = document.getElementsByClassName("middle")[0];
+    const param_items = form_middle.getElementsByClassName("input-element");
 
     // Se nao ha itens adicionados, cancela a operacao
     if (param_items.length < 6) {
@@ -238,11 +238,11 @@ document.getElementById("calcular").onclick = () => {
     // Se o ultimo item nao eh MEIO, cancela a operacao
     if (param_items.length % 2 === 1) {
         alert("O último item do sistema deve ser um MEIO.");
-        return;
+        return
     }
 
     // Se ha campos vazios, cancela a operacao
-    const inputs = sidebar_middle.getElementsByTagName("input");
+    const inputs = form_middle.getElementsByTagName("input");
     const values = Array.prototype.map.call(inputs, e => e.required ? e.value : "placeholder");
     if (values.includes("")) {
         return;
@@ -260,14 +260,14 @@ document.getElementById("calcular").onclick = () => {
             continue;
         } else if (i%2===1) {
             // Se impar, estamos no MEIO
-            dab.push(Number(document.getElementById(`imdist${i+1}`).value));
-            n.push(Number(document.getElementById(`imref${i+1}`).value));
+            dab.push(Number(document.getElementById(`idist${i+1}`).value));
+            n.push(Number(document.getElementById(`iref${i+1}`).value));
         } else {
             // Se par, estamos na LENTE
-            da.push(Number(document.getElementById(`illarg${i+1}`).value));
-            na.push(Number(document.getElementById(`ilref${i+1}`).value));
-            R.push(Number(document.getElementById(`ilre${i+1}`).value));
-            R.push(Number(document.getElementById(`ilrd${i+1}`).value));
+            da.push(Number(document.getElementById(`ilar${i+1}`).value));
+            na.push(Number(document.getElementById(`iref${i+1}`).value));
+            R.push(Number(document.getElementById(`ire${i+1}`).value));
+            R.push(Number(document.getElementById(`ird${i+1}`).value));
         }
     }
 

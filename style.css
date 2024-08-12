@@ -1,51 +1,47 @@
 @charset "UTF-8";
 
 * {
+    /* border: 1px solid black; */
     margin: 0;
-    padding: 0;
+    padding: 0px;
     box-sizing: border-box;
+    --color-1: #006633;
 }
 
-body {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: 
-    "aside main main main";
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-form.sidebar {
-    grid-area: aside;
-    display: flex;
-    flex-direction: column;
-    background-color: #006633;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+html {
     height: 100vh;
 }
 
-form > div.sidebar-item {
-    width: calc(100% - 30px);
-    margin: auto;
-    margin-bottom: 15px;
-    /* border: 1px solid black; */
+body    {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-form > div.sidebar-item.top {
-    margin-top: 15px;
+aside {
+    display: flex;
+    background-color: var(--color-1);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
 }
 
-/* form > div.sidebar-item.top > img {
-    width: 100%;
-    margin: 10px 0 10px 0;
-} */
-
-form > div.sidebar-item.top > div.div-btn-add, 
-form > div.sidebar-item.bottom > div.div-btn-submit {
-    text-align: center;
+aside > form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 10px;
 }
 
-form > div.sidebar-item.top > div.div-btn-add > input,
-form > div.sidebar-item.bottom > div.div-btn-submit > input {
+aside > form > section.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+aside > form > section.top input,
+aside > form > section.bottom input {
     display: inline-block;
     outline: 0;
     border: none;
@@ -58,67 +54,76 @@ form > div.sidebar-item.bottom > div.div-btn-submit > input {
     font-weight: normal;
 }
 
-form > div.sidebar-item.top > div.div-btn-add > input:hover,
-form > div.sidebar-item.bottom > div.div-btn-submit > input:hover {
+aside > form > section.top input:hover,
+aside > form > section.bottom input:hover {
     background-color: rgba(255, 255, 255, 0.6)
 }
 
-form > div.sidebar-item.middle {
-    flex: 1;
-    /* margin-top: 10px; */
-    /* margin-bottom: 10px; */
-    border-radius: 15px;
-    background-color: rgba(0, 0, 0, 0.12);
-    font-size: 0.8em;
+aside > form > section.middle {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
     overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 0.8em;
 }
 
-form > div.sidebar-item.middle::-webkit-scrollbar {
+aside > form > section.middle::-webkit-scrollbar {
     width: 9px;
 }
 
-form > div.sidebar-item.middle::-webkit-scrollbar-track {
+aside > form > section.middle::-webkit-scrollbar-track {
     background: transparent;
 }
 
-form > div.sidebar-item.middle::-webkit-scrollbar-thumb {
+aside > form > section.middle::-webkit-scrollbar-thumb {
     background-color: rgba(155, 155, 155, 0.5);
     border-radius: 20px;
     border: transparent;
 }
 
-form > div.sidebar-item.middle > div.param-item {
+aside > form > section.middle > div.input-element {
     display: flex;
-    margin: 10px;
-    padding: 3px 8px;
-    background-color: rgba(255, 255, 255, 1);
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 50px;
+    justify-content: flex-end;
+    padding: 8px;
+    background-color: whitesmoke;
     border-radius: 15px;
 }
 
+aside > form > section.middle > div.input-element > h2 {
+    margin-right: auto;
+    align-self: center;
+    font-size: 1em;
+    font-weight: normal;
+    min-width: 70px;
+}
 
-form > div.sidebar-item.middle > div.param-item > div.input-group {
-    flex: 1;
+aside > form > section.middle > div.input-element > div.input-boxes {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    flex-wrap: nowrap;
+    gap: 4px;
 }
 
-form > div.sidebar-item.middle > div.param-item > div {
-    margin: 3px;
+aside > form > section.middle > div.input-element > div.input-boxes > div.input-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-form > div.sidebar-item.middle > div.param-item > div.title {
-    align-self: center;
-    font-size: 0.8em;
+aside > form > section.middle > div.input-element > div.input-boxes > div.input-box > label {
+    font-size: 0.9em;
 }
 
-form > div.sidebar-item.middle > div.param-item > div.input-group > div.input-field {
-    font-size: 0.8em;
-    margin: 3px;
-}
-
-form > div.sidebar-item.middle > div.param-item > div.input-group > div.input-field > input {
-    font-size: inherit;
+aside > form > section.middle > div.input-element > div.input-boxes > div.input-box > input {
     border-radius: 4px;
     line-height: 1.5;
     padding: 0 4px;
@@ -126,103 +131,100 @@ form > div.sidebar-item.middle > div.param-item > div.input-group > div.input-fi
     border: 2px solid #dee1e2;
     color: rgb(14, 14, 16);
     background: #dee1e2;
-    width: 100px;   
+    font-size: 0.9em;
+    width: 110px;
 }
 
-form > div.sidebar-item.middle > div.param-item > div.input-group > div.input-field > input:hover {
-    border-color: #ccc;
-}
-
-form > div.sidebar-item.middle > div.param-item > div.input-group > div.input-field > input:focus {
-    background: #fff;
+aside > form > section.bottom {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 main {
-    grid-area: main;
+    flex-grow: 1;
     display: flex;
-    flex-wrap: nowrap;
     flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+    padding-top: 10px;
+    color: #222;
     overflow-y: auto;
-    height: 100vh;
+    min-width: 700px;
 }
 
 main > h1 {
-    text-align: center;
-    margin: 8px;
-    color: #222;
     font-size: 1.5em;
 }
 
 main > p {
-    font-size: 0.8em;
+    font-size: 0.85em;
     text-align: justify;
     text-indent: 20px;
-    padding: 4px 20px;
+    max-width: 900px;;
 }
 
-main > div.output {
-    flex: 1;
-    margin: 5px auto 5px auto;
-    padding: 10px 20px;
-    width: calc(100% - 26px);
-    border-radius: 15px;
-    background-color: rgba(0, 0, 0, 0.06);
-    color: #222;
-}
-
-main > div.output > h2 {
-    font-size: 0.9em;
-}
-
-main > div.output > table {
+main > table {
     border-collapse: collapse;
     margin: 12px auto;
     font-size: 0.8em;
     font-family: sans-serif;
-    width: 80%;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     border-radius: 15px;
+    overflow: hidden;
 }
 
-main > div.output > table > thead > tr >  th {
+main > table > thead > tr >  th {
     /* background-color: #009879; */
     color: #ffffff;
     text-align: left;
     background-color: rgb(80, 80, 80);
 }
 
-main > div.output > table > thead > tr >  th:first-child {
+main > table > thead > tr >  th:first-child {
     border-top-left-radius: 15px;
 } 
 
-main > div.output > table > thead > tr >  th:last-child {
+main > table > thead > tr >  th:last-child {
     border-top-right-radius: 15px;
 } 
 
-main > div.output > table th,
-main > div.output > table td {
+main > table th,
+main > table td {
     padding: 5px 15px;
 }
 
-main > div.output > table > tbody tr:nth-of-type(even) {
-    background-color: #e5e5e5;
+main > table > tbody tr:nth-of-type(even) {
+    background-color: rgba(229, 229, 229, 0.4);
 }
 
-main > div.output > table > tbody tr:last-of-type {
+main > table > tbody tr:last-of-type {
     border-radius: 15px;
 }
 
-main > div.output > table > tbody tr:hover {
+main > table > tbody tr:hover {
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+main > h1,
+main > p,
+main > table {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 main > footer {
     text-align: center;
     background-color: #222;
     color: rgb(255, 255, 255, 0.9);
-    font-size: 0.5em;
+    font-size: 0.7em;
     padding: 1px;
+    margin-top: auto;
+    width: 100%;
 }
+
+
 
 
 

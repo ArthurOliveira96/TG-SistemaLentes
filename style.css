@@ -1,0 +1,230 @@
+@charset "UTF-8";
+
+* {
+    /* border: 1px solid black; */
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+    --color-1: #006633;
+}
+
+html {
+    height: 100vh;
+}
+
+body    {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+aside {
+    display: flex;
+    background-color: var(--color-1);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+aside > form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+aside > form > section.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+aside > form > section.top input,
+aside > form > section.bottom input {
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    font-size: 0.8em;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #222;
+    font-weight: normal;
+}
+
+aside > form > section.top input:hover,
+aside > form > section.bottom input:hover {
+    background-color: rgba(255, 255, 255, 0.6)
+}
+
+aside > form > section.middle {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 0.8em;
+}
+
+aside > form > section.middle::-webkit-scrollbar {
+    width: 9px;
+}
+
+aside > form > section.middle::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+aside > form > section.middle::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 20px;
+    border: transparent;
+}
+
+aside > form > section.middle > div.input-element {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 50px;
+    justify-content: flex-end;
+    padding: 6px 8px;
+    background-color: whitesmoke;
+    border-radius: 15px;
+}
+
+aside > form > section.middle > div.input-element > h2 {
+    margin-right: auto;
+    align-self: center;
+    font-size: 1em;
+    font-weight: normal;
+    min-width: 70px;
+}
+
+aside > form > section.middle > div.input-element > div.input-boxes {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 4px;
+}
+
+aside > form > section.middle > div.input-element > div.input-boxes > div.input-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+aside > form > section.middle > div.input-element > div.input-boxes > div.input-box > label {
+    font-size: 0.9em;
+}
+
+aside > form > section.middle > div.input-element > div.input-boxes > div.input-box > input {
+    border-radius: 4px;
+    line-height: 1.5;
+    padding: 0 4px;
+    transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+    border: 2px solid #dee1e2;
+    color: rgb(14, 14, 16);
+    background: #dee1e2;
+    font-size: 0.9em;
+    width: 110px;
+}
+
+aside > form > section.bottom {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+    padding-top: 10px;
+    color: #222;
+    overflow-y: auto;
+    min-width: 700px;
+}
+
+main > h1 {
+    font-size: 1.5em;
+}
+
+main > p {
+    font-size: 0.85em;
+    text-align: justify;
+    text-indent: 20px;
+    max-width: 900px;;
+}
+
+main > table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 0.8em;
+    font-family: sans-serif;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+main > table > thead > tr >  th {
+    /* background-color: #009879; */
+    color: #ffffff;
+    text-align: left;
+    background-color: rgb(80, 80, 80);
+}
+
+main > table > thead > tr >  th:first-child {
+    border-top-left-radius: 15px;
+} 
+
+main > table > thead > tr >  th:last-child {
+    border-top-right-radius: 15px;
+} 
+
+main > table th,
+main > table td {
+    padding: 5px 15px;
+}
+
+main > table > tbody tr:nth-of-type(even) {
+    background-color: rgba(229, 229, 229, 0.4);
+}
+
+main > table > tbody tr:last-of-type {
+    border-radius: 15px;
+}
+
+main > table > tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+main > h1,
+main > p,
+main > table {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+main > footer {
+    text-align: center;
+    background-color: #222;
+    color: rgb(255, 255, 255, 0.9);
+    font-size: 0.7em;
+    padding: 1px;
+    margin-top: auto;
+    width: 100%;
+}
+
+.line--through {
+    text-decoration: line-through;
+}

@@ -1,9 +1,7 @@
 'use strict';
 
 
-function multiple_lenses_formula(n, R, na, da, dab){
-
-    let so;
+function multiple_lenses_formula(so, n, R, na, da, dab){
 
     // Variaveis nao declaradas
     let nright = [];
@@ -133,7 +131,7 @@ function multiple_lenses_formula(n, R, na, da, dab){
         si = siprime + h2;
     };
 
-    return [M11,M12,M21,M22,f,zb,zf,h1,h2];
+    return [M11,M12,M21,M22,f,zb,zf,h1,h2,si];
 };
 
 
@@ -161,6 +159,22 @@ window.smoothScroll = function(target) {
 };
 
 
+const addLineThrough = () => {
+    const inputBoxes = document.querySelectorAll(".input-box");
+    const lastInputBox = inputBoxes[inputBoxes.length-1];
+    
+    inputBoxes.forEach((element) => {
+        element.classList.remove("line--through");
+        element.querySelector("input").required = true;
+    })
+
+    if (lastInputBox.querySelector("label").innerHTML === "D:"){
+        lastInputBox.classList.add("line--through");
+        lastInputBox.querySelector("input").required = false;
+    }
+};
+
+
 document.getElementById("add-elemento").onclick = () => {
     const form_middle = document.getElementsByClassName("middle")[0];
     const items = document.getElementsByClassName("input-element").length;
@@ -173,8 +187,8 @@ document.getElementById("add-elemento").onclick = () => {
                     <h2>Meio ${(items+1)/2} 🧊</h2>
                     <div class="input-boxes">
                         <div class="input-box">
-                            <label for="iref${items+1}">R:</label>
-                            <input type="number" name="ref${items+1}" id="iref${items+1}" placeholder="Refração" step="0.0000000001" min="1" required>
+                            <label for="iref${items+1}">N:</label>
+                            <input type="number" name="ref${items+1}" id="iref${items+1}" placeholder="Ind. refração" step="0.0000000001" min="1" required>
                         </div>
                         <div class="input-box">
                             <label for="idist${items+1}">D:</label>
@@ -191,8 +205,8 @@ document.getElementById("add-elemento").onclick = () => {
                     <h2>Lente ${items/2} 🔍</h2>
                     <div class="input-boxes">
                         <div class="input-box">
-                            <label for="iref${items+1}">R:</label>
-                            <input type="number" name="ref${items+1}" id="iref${items+1}" placeholder="Refração" step="0.0000000001" min="1" required>
+                            <label for="iref${items+1}">N:</label>
+                            <input type="number" name="ref${items+1}" id="iref${items+1}" placeholder="Ind. refração" step="0.0000000001" min="1" required>
                         </div>
                         <div class="input-box">
                             <label for="ilar${items+1}">L:</label>
@@ -212,16 +226,18 @@ document.getElementById("add-elemento").onclick = () => {
         id_new_element = `ird${items+1}`;
     };
 
+    addLineThrough()
     window.smoothScroll(document.getElementById(id_new_element));
 };
 
 
 document.getElementById("remover-elemento").onclick = () => {
     const items = document.getElementsByClassName("input-element");
-    if (items.length > 4) {
+    if (items.length > 6) {
         const to_remove = items[items.length-1];
         to_remove.remove();
     };
+    addLineThrough()
 };
 
 
@@ -271,7 +287,7 @@ document.getElementById("calcular").onclick = () => {
         }
     }
 
-    let solution = multiple_lenses_formula(n, R, na, da, dab.slice(1, -1));
+    let solution = multiple_lenses_formula(dab[0], n, R, na, da, dab.slice(1, -1));
 
     let M11 = solution[0];
     let M12 = solution[1];
@@ -282,15 +298,17 @@ document.getElementById("calcular").onclick = () => {
     let zf = solution[6];
     let h1 = solution[7];
     let h2 = solution[8];
+    let si = solution[9];
 
-    window.document.getElementById("im11").innerHTML = M11.map(e => e.toFixed(2));
-    window.document.getElementById("im12").innerHTML = M12.map(e => e.toFixed(2));
-    window.document.getElementById("im21").innerHTML = M21.map(e => e.toFixed(2));
-    window.document.getElementById("im22").innerHTML = M22.map(e => e.toFixed(2));
+    window.document.getElementById("im11").innerHTML = M11.map(e => e.toFixed(2)).join(", ");
+    window.document.getElementById("im12").innerHTML = M12.map(e => e.toFixed(2)).join(", ");
+    window.document.getElementById("im21").innerHTML = M21.map(e => e.toFixed(2)).join(", ");
+    window.document.getElementById("im22").innerHTML = M22.map(e => e.toFixed(2)).join(", ");
     window.document.getElementById("if").innerHTML = f.toFixed(2);
     window.document.getElementById("ih1").innerHTML = h1.toFixed(2);
     window.document.getElementById("ih2").innerHTML = h2.toFixed(2);
     window.document.getElementById("izb").innerHTML = zb.toFixed(2);
     window.document.getElementById("izf").innerHTML = zf.toFixed(2);
+    window.document.getElementById("isi").innerHTML = si.toFixed(2);
     
 }

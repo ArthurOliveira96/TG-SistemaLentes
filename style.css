@@ -32,6 +32,7 @@ aside > form {
     flex-wrap: nowrap;
     gap: 10px;
     padding: 10px;
+    font-size: 0.9em;
 }
 
 aside > form > section.top {
@@ -63,7 +64,7 @@ aside > form > section.middle {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 4px;
     overflow-y: auto;
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 15px;
@@ -91,7 +92,7 @@ aside > form > section.middle > div.input-element {
     flex-wrap: nowrap;
     gap: 50px;
     justify-content: flex-end;
-    padding: 8px;
+    padding: 6px 8px;
     background-color: whitesmoke;
     border-radius: 15px;
 }
@@ -167,10 +168,10 @@ main > p {
 
 main > table {
     border-collapse: collapse;
-    margin: 12px auto;
+    margin: 0 auto;
     font-size: 0.8em;
     font-family: sans-serif;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
     border-radius: 15px;
     overflow: hidden;
 }
@@ -222,4 +223,8 @@ main > footer {
     padding: 1px;
     margin-top: auto;
     width: 100%;
+}
+
+.line--through {
+    text-decoration: line-through;
 }

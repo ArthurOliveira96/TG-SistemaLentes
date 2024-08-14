@@ -20,8 +20,8 @@
                     <h2>Meio 1 🧊</h2>
                     <div class="input-boxes">
                         <div class="input-box">
-                            <label for="iref2">R:</label>
-                            <input type="number" name="ref2" id="iref2" placeholder="Refração" step="0.0000000001" min="1" required>
+                            <label for="iref2">N:</label>
+                            <input type="number" name="ref2" id="iref2" placeholder="Ind. refração" step="0.0000000001" min="1" required>
                         </div>
                         <div class="input-box">
                             <label for="idist2">D:</label>
@@ -33,8 +33,8 @@
                     <h2>Lente 1 🔍</h2>
                     <div class="input-boxes">
                         <div class="input-box">
-                            <label for="iref3">R:</label>
-                            <input type="number" name="ref3" id="iref3" placeholder="Refração" step="0.0000000001" min="1" required>
+                            <label for="iref3">N:</label>
+                            <input type="number" name="ref3" id="iref3" placeholder="Ind. refração" step="0.0000000001" min="1" required>
                         </div>
                         <div class="input-box">
                             <label for="ilar3">L:</label>
@@ -54,8 +54,8 @@
                     <h2>Meio 2 🧊</h2>
                     <div class="input-boxes">
                         <div class="input-box">
-                            <label for="iref4">R:</label>
-                            <input type="number" name="ref4" id="iref4" placeholder="Refração" step="0.0000000001" min="1" required>
+                            <label for="iref4">N:</label>
+                            <input type="number" name="ref4" id="iref4" placeholder="Ind. refração" step="0.0000000001" min="1" required>
                         </div>
                         <div class="input-box">
                             <label for="idist4">D:</label>
@@ -63,7 +63,42 @@
                         </div>
                     </div>
                 </div>
+                <div class="input-element">
+                    <h2>Lente 2 🔍</h2>
+                    <div class="input-boxes">
+                        <div class="input-box">
+                            <label for="iref5">N:</label>
+                            <input type="number" name="ref5" id="iref5" placeholder="Ind. refração" step="0.0000000001" min="1" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="ilar5">L:</label>
+                            <input type="number" name="lar5" id="ilar5" placeholder="Largura" step="0.0000000001" min="0" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="ire5">R<sub>e</sub>:</label>
+                            <input type="number" name="re5" id="ire5" placeholder="Raio esquerdo" step="0.0000000001" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="ird5">R<sub>d</sub>:</label>
+                            <input type="number" name="rd5" id="ird5" placeholder="Raio direito" step="0.0000000001" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-element">
+                    <h2>Meio 3 🧊</h2>
+                    <div class="input-boxes">
+                        <div class="input-box">
+                            <label for="iref6">N:</label>
+                            <input type="number" name="ref6" id="iref6" placeholder="Ind. refração" step="0.0000000001" min="1" required>
+                        </div>
+                        <div class="input-box line--through">
+                            <label for="idist6">D:</label>
+                            <input type="number" name="dist6" id="idist6" placeholder="Distância" step="0.0000000001" min="0">
+                        </div>
+                    </div>
+                </div>
             </section>
+            
             <section class="bottom">
                 <input type="button" value="Remover elemento" id="remover-elemento">
                 <input type="submit" value="Calcular" id="calcular">
@@ -134,6 +169,11 @@
                     <td>z<sub>f</sub></td>
                     <td>Distância focal frontal</td>
                     <td id="izf"></td>
+                </tr>
+                <tr>
+                    <td>s<sub>i</sub></td>
+                    <td>Distância da imagem</td>
+                    <td id="isi"></td>
                 </tr>
             </tbody>
         </table>

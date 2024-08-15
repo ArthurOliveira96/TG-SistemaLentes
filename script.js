@@ -166,11 +166,16 @@ const addLineThrough = () => {
     inputBoxes.forEach((element) => {
         element.classList.remove("line--through");
         element.querySelector("input").required = true;
+        if (element.querySelector("input").placeholder === "Distância da imagem (si)"){
+            element.querySelector("input").placeholder = "Distância";
+        };
+        
     })
 
     if (lastInputBox.querySelector("label").innerHTML === "D:"){
         lastInputBox.classList.add("line--through");
         lastInputBox.querySelector("input").required = false;
+        lastInputBox.querySelector("input").placeholder = "Distância da imagem (si)"
     }
 };
 
@@ -187,7 +192,7 @@ document.getElementById("add-elemento").onclick = () => {
                     <h2>Meio ${(items+1)/2} 🧊</h2>
                     <div class="input-boxes">
                         <div class="input-box">
-                            <label for="iref${items+1}">N:</label>
+                            <label for="iref${items+1}">n:</label>
                             <input type="number" name="ref${items+1}" id="iref${items+1}" placeholder="Ind. refração" step="0.0000000001" min="1" required>
                         </div>
                         <div class="input-box">
@@ -205,7 +210,7 @@ document.getElementById("add-elemento").onclick = () => {
                     <h2>Lente ${items/2} 🔍</h2>
                     <div class="input-boxes">
                         <div class="input-box">
-                            <label for="iref${items+1}">N:</label>
+                            <label for="iref${items+1}">n:</label>
                             <input type="number" name="ref${items+1}" id="iref${items+1}" placeholder="Ind. refração" step="0.0000000001" min="1" required>
                         </div>
                         <div class="input-box">
@@ -253,7 +258,7 @@ document.getElementById("calcular").onclick = () => {
 
     // Se o ultimo item nao eh MEIO, cancela a operacao
     if (param_items.length % 2 === 1) {
-        alert("O último item do sistema deve ser um MEIO.");
+        alert("O último elemento do sistema deve ser um MEIO.");
         return
     }
 

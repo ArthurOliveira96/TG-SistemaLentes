@@ -90,8 +90,8 @@ aside > form > section.middle > div.input-element {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: 50px;
-    justify-content: flex-end;
+    gap: 10px;
+    justify-content: space-between;
     padding: 6px 8px;
     background-color: whitesmoke;
     border-radius: 15px;
@@ -133,7 +133,7 @@ aside > form > section.middle > div.input-element > div.input-boxes > div.input-
     color: rgb(14, 14, 16);
     background: #dee1e2;
     font-size: 0.9em;
-    width: 110px;
+    /* width: 130px; */
 }
 
 aside > form > section.bottom {
@@ -227,4 +227,10 @@ main > footer {
 
 .line--through {
     text-decoration: line-through;
+}
+
+@media screen and (min-width:12850px){
+    aside > form > section.middle {
+        font-size: 1em;
+    }
 }

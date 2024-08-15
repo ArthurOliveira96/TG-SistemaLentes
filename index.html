@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de lentes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside>
+        <form onsubmit="return false">
+            <section class="top">
+                <input type="button" value="Adicionar elemento" id="add-elemento">
+            </section>
+            <section class="middle">
+                <div class="input-element">
+                    <h2>Objeto ✏️</h2>
+                </div>
+                <div class="input-element">
+                    <h2>Meio 1 🧊</h2>
+                    <div class="input-boxes">
+                        <div class="input-box">
+                            <label for="iref2">n:</label>
+                            <input type="number" name="ref2" id="iref2" placeholder="Ind. refração" step="0.0000000001" min="1" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="idist2">D:</label>
+                            <input type="number" name="dist2" id="idist2" placeholder="Distância do objeto (so)" step="0.0000000001" min="0" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-element">
+                    <h2>Lente 1 🔍</h2>
+                    <div class="input-boxes">
+                        <div class="input-box">
+                            <label for="iref3">n:</label>
+                            <input type="number" name="ref3" id="iref3" placeholder="Ind. refração" step="0.0000000001" min="1" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="ilar3">L:</label>
+                            <input type="number" name="lar3" id="ilar3" placeholder="Largura" step="0.0000000001" min="0" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="ire3">R<sub>e</sub>:</label>
+                            <input type="number" name="re3" id="ire3" placeholder="Raio esquerdo" step="0.0000000001" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="ird3">R<sub>d</sub>:</label>
+                            <input type="number" name="rd3" id="ird3" placeholder="Raio direito" step="0.0000000001" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-element">
+                    <h2>Meio 2 🧊</h2>
+                    <div class="input-boxes">
+                        <div class="input-box">
+                            <label for="iref4">n:</label>
+                            <input type="number" name="ref4" id="iref4" placeholder="Ind. refração" step="0.0000000001" min="1" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="idist4">D:</label>
+                            <input type="number" name="dist4" id="idist4" placeholder="Distância" step="0.0000000001" min="0" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-element">
+                    <h2>Lente 2 🔍</h2>
+                    <div class="input-boxes">
+                        <div class="input-box">
+                            <label for="iref5">n:</label>
+                            <input type="number" name="ref5" id="iref5" placeholder="Ind. refração" step="0.0000000001" min="1" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="ilar5">L:</label>
+                            <input type="number" name="lar5" id="ilar5" placeholder="Largura" step="0.0000000001" min="0" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="ire5">R<sub>e</sub>:</label>
+                            <input type="number" name="re5" id="ire5" placeholder="Raio esquerdo" step="0.0000000001" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="ird5">R<sub>d</sub>:</label>
+                            <input type="number" name="rd5" id="ird5" placeholder="Raio direito" step="0.0000000001" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-element">
+                    <h2>Meio 3 🧊</h2>
+                    <div class="input-boxes">
+                        <div class="input-box">
+                            <label for="iref6">n:</label>
+                            <input type="number" name="ref6" id="iref6" placeholder="Ind. refração" step="0.0000000001" min="1" required>
+                        </div>
+                        <div class="input-box line--through">
+                            <label for="idist6">D:</label>
+                            <input type="number" name="dist6" id="idist6" placeholder="Distância da imagem (si)" step="0.0000000001" min="0">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="bottom">
+                <input type="button" value="Remover elemento" id="remover-elemento">
+                <input type="submit" value="Calcular" id="calcular">
+            </section>
+        </form>
+    </aside>
+    <main>
+        <h1>Calculadora de sistemas de lentes</h1>
+        <p>
+            Bem-vindo à nossa aplicação de cálculo de Sistemas Ópticos. Esta aplicação web foi desenvolvida para oferecer uma solução prática e intuitiva para a análise de sistemas ópticos compostos por um número arbitrário de lentes grossas. Ideal para finalidades didáticas e acadêmicas, nossa ferramenta permite que você explore e compreenda melhor os princípios da óptica de maneira interativa.
+        </p>
+        <p>
+            No canto esquerdo da página, você encontrará um painel dedicado à inserção dos parâmetros do sistema óptico onde você pode detalhar as especificações de cada lente, como raio de curvatura das superfícies, índice de refração do material, espessura da lente e distância entre as lentes. Para incluir mais lentes e meios ao seu sistema, clique no botão "Adicionar Item" e repita este passo quantas vezes forem necessárias, até que seu sistema esteja configurado conforme desejado. 
+        </p>
+        <p>
+            Após inserir todos os parâmetros e componentes do sistema, clique no botão "Calcular" para obter os resultados. A aplicação fornecerá a distância focal, distâncias focais frontal e traseira, primeiro e segundo planos principais, além dos elementos da matriz que descreve o sistema óptico.
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parâmetro</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>M<sub>11</sub></td>
+                    <td>Elemento matriz 11</td>
+                    <td id="im11"></td>
+                </tr>
+                <tr>
+                    <td>M<sub>12</sub></td>
+                    <td>Elemento matriz 12</td>
+                    <td id="im12"></td>
+                </tr>
+                <tr>
+                    <td>M<sub>21</sub></td>
+                    <td>Elemento matriz 21</td>
+                    <td id="im21"></td>
+                </tr>
+                <tr>
+                    <td>M<sub>22</sub></td>
+                    <td>Elemento matriz 22</td>
+                    <td id="im22"></td>
+                </tr>
+                <tr>
+                    <td>f</td>
+                    <td>Distância focal</td>
+                    <td id="if"></td>
+                </tr>
+                <tr>
+                    <td>h<sub>1</sub></td>
+                    <td>Primeiro plano principal</td>
+                    <td id="ih1"></td>
+                </tr>
+                <tr>
+                    <td>h<sub>2</sub></td>
+                    <td>Segundo plano principal</td>
+                    <td id="ih2"></td>
+                </tr>
+                <tr>
+                    <td>z<sub>b</sub></td>
+                    <td>Distância focal traseira</td>
+                    <td id="izb"></td>
+                </tr>
+                <tr>
+                    <td>z<sub>f</sub></td>
+                    <td>Distância focal frontal</td>
+                    <td id="izf"></td>
+                </tr>
+                <tr>
+                    <td>s<sub>i</sub></td>
+                    <td>Distância da imagem</td>
+                    <td id="isi"></td>
+                </tr>
+            </tbody>
+        </table>
+        <footer>
+            &copy; Desenvolvido por <strong>Arthur Oliveira</strong>, <strong>Giovanni Martins</strong> e <strong>Fulvio Callegari</strong>
+        </footer>
+        <script src="script.js"></script>
+    </main>
+</body>
+</html>

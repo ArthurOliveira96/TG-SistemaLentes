@@ -229,8 +229,8 @@ main > footer {
     text-decoration: line-through;
 }
 
-@media screen and (min-width:12850px){
+@media screen and (min-width:1285px){
     aside > form > section.middle {
-        font-size: 1em;
+        font-size: 0.9em;
     }
 }
